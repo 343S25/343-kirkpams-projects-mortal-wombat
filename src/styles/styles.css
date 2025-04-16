@@ -1,0 +1,47 @@
+main {
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+#left-main {
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+}
+
+#spec-info {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 65vh;
+}
+
+.info-block {
+    border: 2px solid #000000;
+    background-color: #727880;
+    flex: 1;
+    
+}
+
+.info-title {
+    color: #f0f0ea;
+}
+.left-main-inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+.left-main-inputs p{
+    margin: 0;
+    color: #727880;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    background-color: #f0f0ea;  
+}
+
