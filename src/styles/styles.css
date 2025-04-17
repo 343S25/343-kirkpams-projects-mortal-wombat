@@ -15,7 +15,6 @@
 
 }
 
-
 header {
     background-color: var(--tan);
     display: flex;
@@ -24,7 +23,11 @@ header {
 
 #title {
     background-color: var(--dark_blue);
+    padding: 10px;
     color: var(--white);
+    border: 2px solid var(--dark_blue);
+    border-radius: 8px;
+    margin: 10px;
 }
 
 #addpet {
@@ -39,7 +42,6 @@ main {
     display: flex;
     flex-direction: row;
     background-color: var(--light_blue);
-
 }
 
 #left-main {
