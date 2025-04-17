@@ -19,22 +19,25 @@
         <div class="modal-content">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="modalLabel">Add Pet</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <label for="label-name" class="form-label">Pet Name:</label>
-            <input class="form-control" type="text" id="label-name">
+            <label for="petName" class="form-label">Pet Name:</label>
+            <input class="form-control" type="text" id="petName">
+
+            <label for="petBreed" class="form-label">Breed of Pet:</label>
+            <input class="form-control" type="text" id="petBreed">
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="save-button">Save changes</button>
+            <button type="button" class="btn btn-primary" id="save-button" onclick="setUpPetLocalStorage()">Save changes</button>
         </div>
         </div>
     </div>
     </div>
 
     <!--BUTTON TO ADD PET MODAL-->
-    <button type="button" id="addpet">Add a Pet</button>
+    <button type="button" id="addpet" onclick="launchModal()">Add a Pet</button>
 
     </nav>
 </header>
@@ -99,7 +102,15 @@
 
     <!-- right Main -->
     <section id="right-main">
-        <!-- right side content -->
+        <!-- picture of breed -->
+         <section id="breed-pic">
+            <img id="actualpicture">
+         </section>
+
+         <!-- breed info -->
+          <section id="breed-info">
+                        
+          </section>
     </section>
 </main>
 
@@ -109,7 +120,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title">Edit Text</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <input type="text" id="appointmentInput" class="form-control">
