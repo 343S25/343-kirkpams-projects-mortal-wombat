@@ -59,6 +59,8 @@ main {
 }
 
 .info-block {
+    display: flex;
+    flex-direction: column;
     border: 2px solid #000000;
     background-color: #727880;
     flex: 1;
@@ -66,18 +68,31 @@ main {
 
 .info-title {
     color: #f0f0ea;
+    flex: 0 0 10%;
 }
 .left-main-inputs {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    flex: 1;
 }
 
 .left-main-inputs p{
+    flex: 1;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #727880;
     border: 2px solid #000000;
     border-radius: 8px;
     background-color: #f0f0ea;  
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
+    text-align: center;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
 }
 
 #right-main {
