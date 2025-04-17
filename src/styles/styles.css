@@ -1,3 +1,27 @@
+:root {
+    --light_gray: #727880;
+    --dark_gray: #363d46;
+    --white: #f0f0ea;
+    --tan: #ceb290;
+    --dark_blue: #060644;
+    --light_blue: #E6F2FF;
+}
+
+header {
+    background-color: var(--tan);
+    display: flex;
+    flex-direction: row;
+}
+
+#title {
+    background-color: var(--dark_blue);
+    color: var(--white);
+}
+
+#addpet {
+    justify-self: flex-end;
+}
+
 main {
     padding-left: 30px;
     padding-right: 30px;
@@ -5,6 +29,7 @@ main {
     padding-bottom: 100px;
     display: flex;
     flex-direction: row;
+    background-color: var(--light_blue);
 
 }
 
@@ -45,3 +70,6 @@ main {
     background-color: #f0f0ea;  
 }
 
+footer {
+    background-color: var(--tan);
+}
