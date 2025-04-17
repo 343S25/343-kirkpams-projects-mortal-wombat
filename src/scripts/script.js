@@ -81,7 +81,8 @@ function setUpPetAndLocalStorage() {
 
 // Change all of the things to do with the new selected pet
 function setUpDifferentPet(pet) {
-    changeBreedImage(pet.textContent);
+    let pet_name = pet.textContent;
+    changeBreedImage(pet_name);
 }
 
 // Get breed image from API and set the image to it
