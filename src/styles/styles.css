@@ -7,6 +7,15 @@
     --light_blue: #E6F2FF;
 }
 
+#general-info {
+    border: 2px solid #000000;
+    background-color: var(--white);
+    margin-bottom: 50px;
+    margin-right: 80px;
+
+}
+
+
 header {
     background-color: var(--tan);
     display: flex;
@@ -46,6 +55,7 @@ main {
     flex-direction: row;
     height: 65vh;
     text-align: center;
+    margin-right: 80px;
 }
 
 .info-block {
