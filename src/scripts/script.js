@@ -36,6 +36,7 @@ function edit() {
     closeModal("editModal");
 }
 
+// Create button for pet
 function createPetButton(name) {
     let petlist = document.getElementById("petList");
     let newpet = document.createElement("button");
@@ -45,6 +46,7 @@ function createPetButton(name) {
     petlist.appendChild(newpet);
 }
 
+// Add pet to local storage array
 function addPetToLocalStorage(name, breed) {
     let cur = JSON.parse(localStorage.getItem('pets'));
     cur.push({
@@ -53,6 +55,7 @@ function addPetToLocalStorage(name, breed) {
     localStorage.setItem('pets', JSON.stringify(cur));
 }
 
+// Find and return pet if it exists
 function petExists(name) {
     for (let pet of JSON.parse(localStorage.getItem('pets'))) {
         if (pet.name == name)
