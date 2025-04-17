@@ -88,7 +88,12 @@ function changeBreedImage(petname) {
     fetch ("https://dog.ceo/api/breed/" + pet.breed + "/images/random")
         .then(data => data.json())
         .then(da => {
-            image.src = da.message;
+            if (da.status != 'error') {
+                image.src = da.message;
+            } else {
+                image.src = null;
+                image.alt = da.message;
+            }
         });
 }
 
