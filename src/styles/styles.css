@@ -82,6 +82,7 @@ main {
 
 #right-main {
     background-color: var(--dark_gray);
+    width: 40vw;
 }
 
 #breed-pic {
