@@ -42,7 +42,7 @@ function createPetButton(name) {
     let newpet = document.createElement("button");
     newpet.textContent = name;
     newpet.classList.add("petNameList");
-    newpet.addEventListener('click', () => setUpDifferentPet(newpet));
+    newpet.addEventListener('click', () => setUpDifferentPet(newpet.textContent));
     petlist.appendChild(newpet);
 }
 
@@ -80,8 +80,7 @@ function setUpPetAndLocalStorage() {
 }
 
 // Change all of the things to do with the new selected pet
-function setUpDifferentPet(pet) {
-    let pet_name = pet.textContent;
+function setUpDifferentPet(pet_name) {
     changeBreedImage(pet_name);
 }
 
@@ -107,6 +106,9 @@ function changeBreedImage(petname) {
         let pets = JSON.parse(localStorage.getItem('pets'));
         for (let pet of pets) {
             createPetButton(pet.name);
+        }
+        if (pets.length > 1) {
+            setUpDifferentPet(pets[0].name)
         }
     } else {
         localStorage.setItem('pets', JSON.stringify([]));
