@@ -45,13 +45,13 @@ main {
     justify-content: space-between;
     flex-direction: row;
     height: 65vh;
+    text-align: center;
 }
 
 .info-block {
     border: 2px solid #000000;
     background-color: #727880;
     flex: 1;
-    
 }
 
 .info-title {
