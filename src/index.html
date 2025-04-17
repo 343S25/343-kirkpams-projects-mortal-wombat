@@ -30,11 +30,13 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" id="save-button" onclick="setUpPetLocalStorage()">Save changes</button>
+            <button type="button" class="btn btn-primary" id="save-button" onclick="setUpPetAndLocalStorage()">Save changes</button>
         </div>
         </div>
     </div>
     </div>
+
+    <ul id="petList"></ul>
 
     <!--BUTTON TO ADD PET MODAL-->
     <button type="button" id="addpet" onclick="launchModal()">Add a Pet</button>
