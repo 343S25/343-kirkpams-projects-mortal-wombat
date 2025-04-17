@@ -70,6 +70,16 @@ main {
     background-color: #f0f0ea;  
 }
 
+#right-main {
+    background-color: var(--dark_gray);
+}
+
+#breed-pic {
+    height: 50%;
+    color: var(--white);
+    text-align: center;
+}
+
 footer {
     background-color: var(--tan);
 }
