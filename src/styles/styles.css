@@ -191,4 +191,8 @@ footer {
         height: 20%;
         margin-bottom: 30px;
       }
+
+      #right-main {
+        width: 100%;
+      }
   }
