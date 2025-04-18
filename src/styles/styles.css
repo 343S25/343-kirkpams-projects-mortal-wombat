@@ -193,6 +193,11 @@ main {
     font-family: serif;
 }
 
+#title-anchor {
+    text-decoration: none; 
+    color: inherit;
+}
+
 /* responsive design when screen size is below 501px */
 @media (max-width: 500px) {
     main {
