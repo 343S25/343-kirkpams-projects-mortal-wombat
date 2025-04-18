@@ -92,10 +92,11 @@ main {
 
 .info-block {
     display: flex;
+    flex: 0 1 calc(25% - 15px);
     flex-direction: column;
+    flex-wrap: wrap;
     border: 2px solid #000000;
     background-color: #727880;
-    flex: 1;
 }
 
 .info-title {
@@ -160,3 +161,34 @@ footer {
 #breed-info {
     height: 60%;
 }
+
+/* responsive design when screen size is below 501px */
+@media (max-width: 500px) {
+    main {
+        flex-direction: column;
+      }
+    
+      #left-main {
+        width: 100%;
+        height: 950px;
+        align-items: center;
+      }
+    
+      #spec-info {
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-right: 40px;
+        margin-left: 40px;
+      }
+    
+      .info-block {
+        flex: 0 0 45%;
+        height: 340px;
+      }
+      #general-info {
+        margin-right: 0;
+        width: 100%;
+        height: 20%;
+        margin-bottom: 30px;
+      }
+  }
