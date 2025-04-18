@@ -94,6 +94,7 @@ function changeBreedImage(petname) {
         .then(da => {
             if (da.status != 'error') {
                 image.src = da.message;
+                image.alt = 'image of ' + pet.breed;
             } else {
                 image.src = null;
                 image.alt = da.message;
