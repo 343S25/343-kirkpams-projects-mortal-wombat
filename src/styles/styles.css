@@ -12,13 +12,33 @@
     background-color: var(--white);
     margin-bottom: 50px;
     margin-right: 80px;
-
+    
 }
 
 header {
     background-color: var(--tan);
     display: flex;
     flex-direction: row;
+}
+
+footer {
+    background-color: var(--tan);
+    display: flex;
+    flex-direction: row;
+    min-height: 50px;
+}
+
+footer p, footer a {
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    font-size: 20px;
+
+}
+
+footer a {
+    padding-left: 0px;
 }
 
 nav {
@@ -137,10 +157,6 @@ main {
     height: 50%;
     color: var(--white);
     text-align: center;
-}
-
-footer {
-    background-color: var(--tan);
 }
 
 #actualpicture {
