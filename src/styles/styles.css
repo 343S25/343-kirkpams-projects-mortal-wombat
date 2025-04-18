@@ -26,6 +26,7 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
+    padding: 10px;
 }
 
 #petList {
@@ -39,6 +40,19 @@ nav {
 
 .petNameList {
     height: 100%;
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 10px;
+    border-width: 1px;
+    font-weight: bold;
+}
+
+#addpet {
+    border-style: solid;
+    border-color: #000000;
+    border-radius: 10px;
+    font-weight: bold;
+    border-width: 1px;
 }
 
 #title {
