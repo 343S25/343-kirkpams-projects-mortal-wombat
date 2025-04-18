@@ -177,7 +177,8 @@ footer {
       #spec-info {
         gap: 20px;
         flex-wrap: wrap;
-        margin-right: 0;
+        margin-right: 40px;
+        margin-left: 40px;
       }
     
       .info-block {
@@ -186,5 +187,8 @@ footer {
       }
       #general-info {
         margin-right: 0;
+        width: 100%;
+        height: 20%;
+        margin-bottom: 30px;
       }
   }
