@@ -82,6 +82,7 @@ function setUpPetAndLocalStorage() {
 // Change all of the things to do with the new selected pet
 function setUpDifferentPet(pet_name) {
     changeBreedImage(pet_name);
+    changeBreedInfo(pet_name);
 }
 
 // Get breed image from API and set the image to it
@@ -98,6 +99,27 @@ function changeBreedImage(petname) {
                 image.alt = da.message;
             }
         });
+}
+
+// Get breed info from API and display the text in #actualinfo
+function changeBreedInfo(petname) {
+    let pet = petExists(petname);
+    let info = document.getElementById("actualinfo");
+
+    fetch("https://api.thedogapi.com/v1/breeds/search?q=" + pet.breed)
+        .then(data => data.json())
+        .then(da => {
+            if (da.length > 0) {
+                let breed = da[0];
+                info.innerHTML = 
+                    "Breed: " + breed.name + "<br>" +
+                    "Temperament: " + breed.temperament + "<br>" +
+                    "Life Span: " + breed.life_span + "<br>" +
+                    "Average Weight: " + breed.weight.metric + " kg";
+            } else {
+                info.textContent = "Breed information not found.";
+            }
+    });
 }
 
 // Initialization Function

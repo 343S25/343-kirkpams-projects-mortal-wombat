@@ -121,3 +121,12 @@ footer {
 #breed-pic {
     height: 40%;
 }
+
+#actualinfo {
+    color: var(--white);
+    padding: 10px;
+}
+
+#breed-info {
+    height: 60%;
+}
