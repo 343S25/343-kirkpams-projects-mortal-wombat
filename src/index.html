@@ -7,6 +7,35 @@
 </head>
 
 <body>
+  <header>
+    <h1>Welcome to Pet Parent!</h1>
+  </header>
 
+  <main>
+    <h2>Enter New Pet:</h2>
+    <form>
+      <div class="form-group">
+        <label for="pet-name">Input Pet Name</label>
+        <input type="text" id="pet-name" name="Pet Name">
+        <label for="pet-breed">Input Pet Breed</label>
+        <input type="text" id="pet-breed" name="Pet Breed">
+      </div>
+      <div class="form-buttons">
+        <button type="submit" id="update" onclick="updateDescription(event)">Submit</button>
+      </div>
+    </form>
+
+    <h3>Returning User?</h3>
+    <a href="main.html">Click Here</a>
+    <br>
+    <br>
+  </main>
+
+  <footer>
+    Looking to Adopt? Answer all your queries here:
+    <a id="adoptlink" href="https://www.aspca.org/adopt-pet" target="_blank">Adopt Today!</a>
+    Want to learn more about PetParent: 
+    <a id="aboutlink" href="about2.html">Click Here!</a>
+  </footer>
 </body>
 </html>
