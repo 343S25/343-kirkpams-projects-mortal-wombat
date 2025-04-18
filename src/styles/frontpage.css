@@ -1,0 +1,48 @@
+:root {
+    --light_gray: #727880;
+    --dark_gray: #363d46;
+    --white: #f0f0ea;
+    --tan: #ceb290;
+    --dark_blue: #060644;
+    --light_blue: #E6F2FF;
+}
+
+body {
+    background-color: var(--light_blue);
+}
+
+header {
+    background-color: var(--tan);
+    display: flex;
+    flex-direction: row;
+    font-family: Verdana, sans-serif;
+}
+
+#title {
+    background-color: var(--dark_blue);
+    padding: 10px;
+    color: var(--white);
+    border: 2px solid var(--dark_blue);
+    border-radius: 8px;
+    margin: 10px;
+    font-family: Verdana, sans-serif;
+}
+
+footer {
+    background-color: var(--tan);
+    display: flex;
+    flex-direction: row;
+    min-height: 50px;
+}
+
+footer p, footer a {
+    font-family: Verdana, sans-serif;
+    text-align: center;
+    padding: 10px;
+    margin: 0;
+    font-size: 20px;
+}
+
+footer a {
+    padding-left: 0px;
+}
