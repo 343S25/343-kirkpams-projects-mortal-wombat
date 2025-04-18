@@ -169,17 +169,22 @@ footer {
       }
     
       #left-main {
-        width: 100vw;
+        width: 100%;
         height: 950px;
+        align-items: center;
       }
     
       #spec-info {
         gap: 20px;
         flex-wrap: wrap;
+        margin-right: 0;
       }
     
       .info-block {
         flex: 0 0 45%;
         height: 340px;
+      }
+      #general-info {
+        margin-right: 0;
       }
   }
