@@ -18,11 +18,16 @@
       <div class="form-group">
         <label for="pet-name">Input Pet Name</label>
         <input type="text" id="pet-name" name="Pet Name">
+        <br>
         <label for="pet-breed">Input Pet Breed</label>
         <input type="text" id="pet-breed" name="Pet Breed">
+        <br>
+        <br>
+        <label for="pet-description">Please provide a brief description of your pet</label>
+        <textarea type="text" id="pet-description" placeholder="Enter description"></textarea>
       </div>
       <div class="form-buttons">
-        <button type="submit" id="update" onclick="updateDescription(event)">Submit</button>
+        <button type="submit" id="update" onclick="addFirstPet(event)">Submit</button>
       </div>
     </form>
 
@@ -40,5 +45,7 @@
     <p>Want to learn more about PetParent?</p>
     <a id="aboutlink" href="about.html">Click Here!</a>
   </footer>
+
+  <script src="scripts/firstload.js"></script>
 </body>
 </html>
