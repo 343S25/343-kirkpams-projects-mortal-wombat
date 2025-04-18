@@ -111,3 +111,13 @@ main {
 footer {
     background-color: var(--tan);
 }
+
+#actualpicture {
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+}
+
+#breed-pic {
+    height: 40%;
+}
