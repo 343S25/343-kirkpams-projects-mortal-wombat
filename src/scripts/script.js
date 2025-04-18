@@ -180,7 +180,7 @@ function updateDescription(e) {
         for (let pet of pets) {
             createPetButton(pet.name);
         }
-        if (pets.length > 1) {
+        if (pets.length > 0) {
             setUpDifferentPet(pets[0].name)
             let button = document.querySelector('.petNameList');
             showSelectedPet(button);
