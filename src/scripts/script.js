@@ -36,13 +36,28 @@ function edit() {
     closeModal("editModal");
 }
 
+// Highlight which pet is currelty selected
+function showSelectedPet(button) {
+    let buttons = document.querySelectorAll('.petNameList');
+    for (let b of buttons) {
+        b.style['border-color'] = '#000000'
+        b.style['border-width'] = '1px';
+    }
+    button.style['border-color'] = '#702963';
+    button.style['border-width'] = '2px';
+}
+
+
 // Create button for pet
 function createPetButton(name) {
     let petlist = document.getElementById("petList");
     let newpet = document.createElement("button");
     newpet.textContent = name;
     newpet.classList.add("petNameList");
-    newpet.addEventListener('click', () => setUpDifferentPet(newpet.textContent));
+    newpet.addEventListener('click', () => {
+        setUpDifferentPet(newpet.textContent);
+        showSelectedPet(newpet);
+});
     petlist.appendChild(newpet);
 }
 
@@ -51,7 +66,8 @@ function addPetToLocalStorage(name, breed) {
     let cur = JSON.parse(localStorage.getItem('pets'));
     cur.push({
         'name': name,
-        'breed': breed});
+        'breed': breed,
+        'description': 'No information given for pet yet'});
     localStorage.setItem('pets', JSON.stringify(cur));
 }
 
@@ -83,6 +99,7 @@ function setUpPetAndLocalStorage() {
 function setUpDifferentPet(pet_name) {
     changeBreedImage(pet_name);
     changeBreedInfo(pet_name);
+    changePetDescription(pet_name);
 }
 
 // Get breed image from API and set the image to it
@@ -123,6 +140,39 @@ function changeBreedInfo(petname) {
     });
 }
 
+function changePetDescription(pet_name) {
+    let text = document.getElementById('general-input');
+    let pet = petExists(pet_name);
+    text.textContent = pet.description;
+}
+
+// Save the pets description in local storage
+function updateDescription(e) {
+    e.preventDefault();
+    let curpet = null;
+    let buttons = document.querySelectorAll('.petNameList');
+    for (let b of buttons) {
+        if (b.style['border-width'] == '2px') {
+            curpet = b;
+        }
+    }
+
+    let pets = JSON.parse(localStorage.getItem('pets'));
+    let input = document.getElementById('general-information');
+    let newdesc = input.value.trim();
+    input.value = '';
+
+    let theindex = -1;
+    for (let i in pets) {
+        if (pets[i].name == curpet.textContent) {
+            theindex = i;
+        }
+    }
+    pets[theindex].description = newdesc;
+    localStorage.setItem('pets', JSON.stringify(pets));
+    changePetDescription(pets[theindex].name);
+}
+
 // Initialization Function
 (function () {
     if (localStorage.getItem('pets')) {
@@ -132,6 +182,8 @@ function changeBreedInfo(petname) {
         }
         if (pets.length > 1) {
             setUpDifferentPet(pets[0].name)
+            let button = document.querySelector('.petNameList');
+            showSelectedPet(button);
         }
     } else {
         localStorage.setItem('pets', JSON.stringify([]));
