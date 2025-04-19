@@ -231,4 +231,12 @@ main {
       #right-main {
         width: 100%;
       }
+
+      footer p{
+        font-size: 10px;
+      }
+
+      footer a{
+        font-size: 10px;
+      }
   }

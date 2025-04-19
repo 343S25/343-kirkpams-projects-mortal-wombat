@@ -110,3 +110,14 @@ footer p, footer a {
 footer a {
     padding-left: 0px;
 }
+
+/* responsive design when screen size is below 501px */
+@media (max-width: 500px) {
+    footer p{
+    font-size: 10px;
+    }
+
+    footer a{
+    font-size: 10px;
+    }
+}
