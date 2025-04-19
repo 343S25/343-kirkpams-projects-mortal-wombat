@@ -45,8 +45,8 @@
 </header>
 <main>
     <!-- left main -->
-    <section id="left-main">
-        <section id="general-info">
+    <div id="left-main">
+        <div id="general-info">
             <form class="card-form">
                 <div class="form-group">
                   <label for="general-information">Input General Information</label>
@@ -57,9 +57,9 @@
                 </div>
             </form>
                 <p id="general-input">Text will be here once submitted</p>
-        </section>
+        </div>
 
-        <section id="spec-info">
+        <div id="spec-info">
             <!-- appointments -->
             <div class="info-block">
                 <p class="info-title fw-bold">Upcoming Appointments</p>
@@ -104,21 +104,21 @@
                     <p onclick="openModal(this)">Click to add activity!</p>
                 </div>
             </div>
-        </section>
-    </section>
+        </div>
+    </div>
 
     <!-- right Main -->
-    <section id="right-main">
+    <div id="right-main">
         <!-- picture of breed -->
-         <section id="breed-pic">
-            <img id="actualpicture" alt="No breed image found or no pet selected">
-         </section>
+         <div id="breed-pic">
+            <img id="actualpicture" src="https://via.placeholder.com/150" alt="No breed image found or no pet selected">
+         </div>
 
          <!-- breed info -->
-          <section id="breed-info">
+          <div id="breed-info">
              <p id="actualinfo">Unknown Breed</p>
-          </section>
-    </section>
+          </div>
+    </div>
 </main>
 
 <!-- reusable modal for specific inputs inside #spec-info -->
