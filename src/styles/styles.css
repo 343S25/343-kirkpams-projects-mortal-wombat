@@ -148,7 +148,7 @@ main {
     flex: 1;
 }
 
-.left-main-inputs p{
+.left-main-inputs button{
     flex: 1;
     margin: 0;
     display: flex;
@@ -162,7 +162,7 @@ main {
     word-break: break-word;
     overflow: hidden;
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
     font-family: serif;
 }
 
