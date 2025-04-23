@@ -111,6 +111,10 @@ footer a {
     padding-left: 0px;
 }
 
+footer a:visited, footer a:link {
+    color: black;
+}
+
 /* responsive design when screen size is below 501px */
 @media (max-width: 500px) {
     footer p{
