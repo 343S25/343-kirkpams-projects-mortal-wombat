@@ -53,7 +53,7 @@ body {
   }
   
   p {
-    color: var(--light_gray);
+    color: var(--dark_gray);
     margin-bottom: 15px;
     font-family: sans-serif;
   }
