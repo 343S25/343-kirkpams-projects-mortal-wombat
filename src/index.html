@@ -14,22 +14,26 @@
 
   <main>
     <h2>Enter New Pet:</h2>
-    <form>
-      <div class="form-group">
-        <label for="pet-name">Input Pet Name</label>
-        <input type="text" id="pet-name" name="Pet Name">
-        <br>
-        <label for="pet-breed">Input Pet Breed</label>
-        <input type="text" id="pet-breed" name="Pet Breed">
-        <br>
-        <br>
-        <label for="pet-description">Please provide a brief description of your pet</label>
-        <textarea id="pet-description" placeholder="Enter description"></textarea>
-      </div>
-      <div class="form-buttons">
-        <button type="submit" id="update" onclick="addFirstPet(event)">Submit</button>
-      </div>
-    </form>
+    <div id="split">
+      <form>
+        <div class="form-group">
+          <label for="pet-name">Input Pet Name</label>
+          <input type="text" id="pet-name" name="Pet Name">
+          <br>
+          <label for="pet-breed">Input Pet Breed</label>
+          <input type="text" id="pet-breed" name="Pet Breed">
+          <br>
+          <br>
+          <label for="pet-description">Please provide a brief description of your pet</label>
+          <textarea id="pet-description" placeholder="Enter description"></textarea>
+        </div>
+        <div class="form-buttons">
+          <button type="submit" id="update" onclick="addFirstPet(event)">Submit</button>
+        </div>
+      </form>
+
+      <img id="randombreed" alt="Image of random dog breed">
+    </div>
 
     <h3>Returning User?</h3>
     <a href="main.html" id="returninguser">Continue to Main Page</a>

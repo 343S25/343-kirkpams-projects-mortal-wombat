@@ -21,3 +21,18 @@ function addPetToLocalStorage(name, breed, description) {
         'description': description});
     localStorage.setItem('pets', JSON.stringify(cur));
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    let image = document.getElementById("randombreed");
+    fetch ("https://dog.ceo/api/breeds/image/random")
+        .then(data => data.json())
+        .then(da => {
+            if (da.status != 'error') {
+                image.src = da.message;
+                image.alt = 'Image of random dog breed';
+            } else {
+                image.src = null;
+                image.alt = da.message;
+            }
+        });
+  });
