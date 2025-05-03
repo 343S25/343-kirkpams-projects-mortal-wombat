@@ -25,12 +25,37 @@ function openModal(el) {
     modal.show();
 }
 
-// edits the input field when the modals save button is clicked
+// edits the input field when the modals save button is clicked and updates local storage
 function edit() {
     const newValue = document.getElementById('appointmentInput').value.trim();
-    
+
     if (currentAppointmentElement && newValue) {
+        const section = currentAppointmentElement.dataset.section;
+        const index = parseInt(currentAppointmentElement.dataset.index);
+
         currentAppointmentElement.innerText = newValue;
+
+        // getting current pet
+        const buttons = document.querySelectorAll('.petNameList');
+        let selectedPetName = null;
+        for (let b of buttons) {
+            if (b.style['border-width'] === '2px') {
+                selectedPetName = b.textContent;
+                break;
+            }
+        }
+
+        // setting spec-info to local storage
+        if (selectedPetName) {
+            let pets = JSON.parse(localStorage.getItem('pets'));
+            for (let pet of pets) {
+                if (pet.name === selectedPetName) {
+                    pet[section][index] = newValue;
+                    break;
+                }
+            }
+            localStorage.setItem('pets', JSON.stringify(pets));
+        }
     }
 
     closeModal("editModal");
@@ -65,9 +90,14 @@ function createPetButton(name) {
 function addPetToLocalStorage(name, breed) {
     let cur = JSON.parse(localStorage.getItem('pets'));
     cur.push({
-        'name': name,
-        'breed': breed,
-        'description': 'No information given for pet yet'});
+        name: name,
+        breed: breed,
+        description: 'No information given for pet yet',
+        appointments: ["Click to add appointment!", "Click to add appointment!", "Click to add appointment!", "Click to add appointment!", "Click to add appointment!"],
+        medical: ["Click to add medical info!", "Click to add medical info!", "Click to add medical info!", "Click to add medical info!", "Click to add medical info!"],
+        feeding: ["Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!"],
+        activities: ["Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!"]
+    });
     localStorage.setItem('pets', JSON.stringify(cur));
 }
 
@@ -100,6 +130,7 @@ function setUpDifferentPet(pet_name) {
     changeBreedImage(pet_name);
     changeBreedInfo(pet_name);
     changePetDescription(pet_name);
+    populateModalButtons(pet_name);
 }
 
 // Get breed image from API and set the image to it
@@ -144,6 +175,24 @@ function changePetDescription(pet_name) {
     let text = document.getElementById('general-input');
     let pet = petExists(pet_name);
     text.textContent = pet.description;
+}
+
+// population spec-info modals
+function populateModalButtons(petName) {
+    const pet = petExists(petName);
+    if (!pet) {
+        return;
+    }
+
+    ["appointments", "medical", "feeding", "activities"].forEach(section => {
+        for (let i = 0; i < 5; i++) {
+            const selector = `button[data-section="${section}"][data-index="${i}"]`;
+            const btn = document.querySelector(selector);
+            if (btn) {
+                btn.innerText = pet[section][i];
+            }
+        }
+    });
 }
 
 // Save the pets description in local storage

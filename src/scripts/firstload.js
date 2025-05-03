@@ -16,9 +16,14 @@ function addFirstPet() {
 function addPetToLocalStorage(name, breed, description) {
     let cur = JSON.parse(localStorage.getItem('pets'));
     cur.push({
-        'name': name,
-        'breed': breed,
-        'description': description});
+        name: name,
+        breed: breed,
+        description: description,
+        appointments: ["Click to add appointment!", "Click to add appointment!", "Click to add appointment!", "Click to add appointment!", "Click to add appointment!"],
+        medical: ["Click to add medical info!", "Click to add medical info!", "Click to add medical info!", "Click to add medical info!", "Click to add medical info!"],
+        feeding: ["Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!"],
+        activities: ["Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!"]
+    });
     localStorage.setItem('pets', JSON.stringify(cur));
 }
 
