@@ -222,32 +222,16 @@ function updateDescription(e) {
 }
 
 function exportuh(ev) {
-    // TODO add a feature to create "transportodons" (export the current
-    // todo items as a json file) by completing the steps below:
-
-    // TODO 1. get the current state from localStorage
-    // I wanted mine to be an object with a single key (items) and then a parsed representation of the value from localStorage
-    let state = JSON.parse(localStorage.getItem('items'));
+    let state = JSON.parse(localStorage.getItem('pets'));
     let obj = {
-      'items': state
+      'pets': state
     };
-    // TODO 2. get the stringified version of the state from the previous step
     let stringified = JSON.stringify(obj);
-    // TODO 3. encode the state as a URI component
     let encoded = encodeURIComponent(stringified);
-    // TODO 4. prepend the encoded string with the data URL dark magic:
-    // 'data:application/json;charset=utf-8,'
-    // ok, it's not really dark magic, read more here:
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs
     let prepended = 'data:application/json;charset=utf-8,' + encoded;
-    // TODO 5. create a link which has as its href the result from the preceding step and its download attribute set to
-    // "transportodons.json"
     let link = document.createElement('a');
     link.href = prepended;
-    link.download = 'transportodons.json';
-    // TODO 6. add the link to the downloads container in the provided html
-    document.getElementById('downloads').appendChild(link);
-    // TODO 7. write the javascript to click the newly added link
+    link.download = 'pets.json';
     link.click();
   }
 
