@@ -42,9 +42,12 @@
     <button type="button" id="addpet" onclick="launchModal()">Add a Pet</button>
 
     <div id="dabuttondiv">
-        <button type="button" id="import" onclick="import()">Import Data</button>
-        <button type="button" id="export" onclick="exportuh()">Export Data</button>
-        <button type="button" id="clear" onclick="cleard()">Clear Data</button>
+        <form id="importdafile">
+            <label for="import-file">Import Data</label>
+            <input type="file" id="import-file" name="import-file">
+        </form>
+        <button type="button" id="export-file" onclick="exportuh()">Export Data</button>
+        <button type="button" id="clear-data" onclick="cleard()">Clear Data</button>
     </div>
 
     </nav>

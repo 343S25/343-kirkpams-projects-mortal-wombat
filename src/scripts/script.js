@@ -235,6 +235,31 @@ function exportuh() {
     link.click();
   }
 
+function importuh(ev) {
+    ev.preventDefault()
+    const importField = document.getElementById('import-file')
+
+    let objs = importField.files;
+    importField.value = null;
+    
+    if (objs.length == 0) {
+        alert('No file provided');
+    } else {
+        let reader = new FileReader();
+        reader.addEventListener('load', (e) => loadedJSON(e));
+        reader.readAsText(objs[0]);
+    }
+}
+
+function loadedJSON(ev) {
+    let result = ev.target.result;
+    let decoded = decodeURIComponent(result);
+    let parsed = JSON.parse(decoded);
+    console.log(parsed);
+    localStorage.setItem('pets', JSON.stringify(parsed.pets));
+    location.reload();
+}
+
 function cleard() {
     localStorage.removeItem('pets');
     window.location.reload();
@@ -242,6 +267,8 @@ function cleard() {
 
 // Initialization Function
 (function () {
+    let importt = document.getElementById('import-file');
+    importt.addEventListener('change', (ev) => importuh(ev));
     if (localStorage.getItem('pets')) {
         let pets = JSON.parse(localStorage.getItem('pets'));
         for (let pet of pets) {

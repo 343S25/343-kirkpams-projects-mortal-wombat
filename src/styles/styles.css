@@ -103,6 +103,16 @@ nav {
 #dabuttondiv {
     display: flex;
     flex-direction: column;
+    margin-left: 5px;
+}
+
+#importdafile {
+    display: flex;
+    flex-direction: row;
+}
+
+#import-file {
+    font-size: small;
 }
 
 main {
