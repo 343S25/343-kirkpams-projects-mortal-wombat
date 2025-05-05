@@ -221,7 +221,7 @@ function updateDescription(e) {
     changePetDescription(pets[theindex].name);
 }
 
-function exportClick(ev) {
+function exportuh(ev) {
     // TODO add a feature to create "transportodons" (export the current
     // todo items as a json file) by completing the steps below:
 
@@ -251,7 +251,7 @@ function exportClick(ev) {
     link.click();
   }
 
-function clear() {
+function cleard() {
     localStorage.removeItem('pets');
     window.location.reload();
 }
