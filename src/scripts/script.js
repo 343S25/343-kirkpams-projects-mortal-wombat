@@ -265,10 +265,70 @@ function cleard() {
     window.location.reload();
 }
 
+//Got from Stewart's demo
+async function opfsupload(files) {
+    document.getElementById('opfs-file').value = null;
+    const opfsRoot = await navigator.storage.getDirectory();
+    const directoryHandle = await opfsRoot.getDirectoryHandle("opfs-gallery", {
+      create: true,
+    });
+  
+    const img = document.getElementById("actualpicture");
+    for (const file of files) {
+      let writableFileStream;
+      try {
+        const nestedFileHandle = await directoryHandle.getFileHandle(
+          file.name,
+          { create: true },
+        );
+        writableFileStream = await nestedFileHandle.createWritable()
+        await writableFileStream.write(file);
+      } catch (e) {
+        console.error('error storing file', file, e);
+      } finally {
+        if (writableFileStream) {
+          writableFileStream.close();
+        }
+      }
+  
+      if (!file.type.startsWith("image/")) {
+        continue;
+      }
+  
+      loadImage(img, file);
+    }
+}
+
+function loadImage(img, file) {
+    img.file = file;
+  
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}  
+
+async function opfsinit() {
+    const img = document.getElementById("actualpicture");
+    const opfsRoot = await navigator.storage.getDirectory();
+    const directoryHandle = await opfsRoot.getDirectoryHandle("opfs-gallery", {
+      create: true,
+    });
+    for await (let [name, handle] of directoryHandle) {
+      loadImage(img, await handle.getFile());
+    }
+  }
+
 // Initialization Function
 (function () {
     let importt = document.getElementById('import-file');
     importt.addEventListener('change', (ev) => importuh(ev));
+
+    let opfsup = document.getElementById('opfs-file');
+    opfsup.addEventListener('change', (ev) => opfsupload(opfsup.files));
+    opfsinit();
+
     if (localStorage.getItem('pets')) {
         let pets = JSON.parse(localStorage.getItem('pets'));
         for (let pet of pets) {
