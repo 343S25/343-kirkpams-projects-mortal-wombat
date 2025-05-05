@@ -221,7 +221,7 @@ function updateDescription(e) {
     changePetDescription(pets[theindex].name);
 }
 
-function exportuh(ev) {
+function exportuh() {
     let state = JSON.parse(localStorage.getItem('pets'));
     let obj = {
       'pets': state
