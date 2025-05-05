@@ -260,8 +260,10 @@ function loadedJSON(ev) {
     location.reload();
 }
 
-function cleard() {
+async function cleard() {
     localStorage.removeItem('pets');
+    let opfsRoot = await navigator.storage.getDirectory();
+    await opfsRoot.removeEntry('opfs-gallery', {recursive: true});
     window.location.reload();
 }
 
