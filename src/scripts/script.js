@@ -221,6 +221,11 @@ function updateDescription(e) {
     changePetDescription(pets[theindex].name);
 }
 
+function clear() {
+    localStorage.removeItem('pets');
+    window.location.reload();
+}
+
 // Initialization Function
 (function () {
     if (localStorage.getItem('pets')) {
