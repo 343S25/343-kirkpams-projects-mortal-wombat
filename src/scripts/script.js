@@ -20,7 +20,6 @@ let currentAppointmentElement = null;
 // used when specific input is clicked and opens modal
 function openModal(el) {
     currentAppointmentElement = el;
-    document.getElementById('appointmentInput').value = el.innerText;
     const modal = new bootstrap.Modal(document.getElementById('editModal'));
     modal.show();
 }
