@@ -251,6 +251,11 @@ function exportClick(ev) {
     link.click();
   }
 
+function clear() {
+    localStorage.removeItem('pets');
+    window.location.reload();
+}
+
 // Initialization Function
 (function () {
     if (localStorage.getItem('pets')) {
