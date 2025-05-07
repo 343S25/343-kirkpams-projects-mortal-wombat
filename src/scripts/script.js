@@ -255,8 +255,10 @@ function loadedJSON(ev) {
     let result = ev.target.result;
     let decoded = decodeURIComponent(result);
     let parsed = JSON.parse(decoded);
-    console.log(parsed);
-    localStorage.setItem('pets', JSON.stringify(parsed.pets));
+    let pets = parsed.pets;
+    let old = JSON.parse(localStorage.getItem('pets'));
+    let both = pets.concat(old);
+    localStorage.setItem('pets', JSON.stringify(both));
     location.reload();
 }
 
@@ -319,6 +321,7 @@ async function opfsinit() {
     });
     for await (let [name, handle] of directoryHandle) {
       loadImage(img, await handle.getFile());
+      break;
     }
   }
 
