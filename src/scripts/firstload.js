@@ -22,7 +22,8 @@ function addPetToLocalStorage(name, breed, description) {
         appointments: ["Click to add appointment!", "Click to add appointment!", "Click to add appointment!", "Click to add appointment!", "Click to add appointment!"],
         medical: ["Click to add medical info!", "Click to add medical info!", "Click to add medical info!", "Click to add medical info!", "Click to add medical info!"],
         feeding: ["Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!"],
-        activities: ["Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!"]
+        activities: ["Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!"],
+        filename: ""
     });
     localStorage.setItem('pets', JSON.stringify(cur));
 }
