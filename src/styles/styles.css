@@ -184,22 +184,19 @@ main {
 #right-main {
     background-color: var(--dark_gray);
     width: 40vw;
+    display: flex;
+    flex-direction: column;
 }
 
 #breed-pic {
-    height: 50%;
     color: var(--white);
     text-align: center;
 }
 
 #actualpicture {
-    width: 100%; 
-    height: 100%;
+    width: 100%;
+    max-height: 550px;
     object-fit: cover;
-}
-
-#breed-pic {
-    height: 40%;
 }
 
 #actualinfo {
@@ -208,7 +205,6 @@ main {
 }
 
 #breed-info {
-    height: 60%;
     font-family: serif;
 }
 
