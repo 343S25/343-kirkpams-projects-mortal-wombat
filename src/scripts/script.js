@@ -95,7 +95,8 @@ function addPetToLocalStorage(name, breed) {
         appointments: ["Click to add appointment!", "Click to add appointment!", "Click to add appointment!", "Click to add appointment!", "Click to add appointment!"],
         medical: ["Click to add medical info!", "Click to add medical info!", "Click to add medical info!", "Click to add medical info!", "Click to add medical info!"],
         feeding: ["Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!", "Click to add feeding info!"],
-        activities: ["Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!"]
+        activities: ["Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!", "Click to add activity!"],
+        filename: ""
     });
     localStorage.setItem('pets', JSON.stringify(cur));
 }
@@ -117,7 +118,6 @@ function setUpPetAndLocalStorage() {
     if (petExists(petName)) {
         alert("Pet with that name already exists, please choose another name or consider making this one more unique :)");
     } else {
-
         addPetToLocalStorage(petName, petBreed);
         closeModal("add-pet-modal");
         createPetButton(petName);
@@ -126,10 +126,14 @@ function setUpPetAndLocalStorage() {
 
 // Change all of the things to do with the new selected pet
 function setUpDifferentPet(pet_name) {
-    changeBreedImage(pet_name);
     changeBreedInfo(pet_name);
     changePetDescription(pet_name);
     populateModalButtons(pet_name);
+    let pet = petExists(pet_name);
+    changeBreedImage(pet_name);
+    if (pet.filename != "") {
+        opfschange(pet_name);
+    }
 }
 
 // Get breed image from API and set the image to it
@@ -161,9 +165,12 @@ function changeBreedInfo(petname) {
                 let breed = da[0];
                 info.innerHTML = 
                     "Breed: " + breed.name + "<br>" +
+                    "Breed Group: " + breed.breed_group + "<br>" +
+                    "Generally Bred for: " + breed.bred_for + "<br>" +
                     "Temperament: " + breed.temperament + "<br>" +
                     "Life Span: " + breed.life_span + "<br>" +
-                    "Average Weight: " + breed.weight.metric + " kg";
+                    "Average Weight: " + breed.weight.metric + " kg<br>" + 
+                    "Place(s) of Origin: " + breed.origin;
             } else {
                 info.textContent = "Breed information not found.";
             }
@@ -271,6 +278,22 @@ async function cleard() {
 
 //Got from Stewart's demo
 async function opfsupload(files) {
+    let curpet = null;
+    let buttons = document.querySelectorAll('.petNameList');
+    for (let b of buttons) {
+        if (b.style['border-width'] == '2px') {
+            curpet = b;
+        }
+    }
+
+    let pets = JSON.parse(localStorage.getItem('pets'));
+    let theindex = -1;
+    for (let i in pets) {
+        if (pets[i].name == curpet.textContent) {
+            theindex = i;
+        }
+    }
+
     document.getElementById('opfs-file').value = null;
     const opfsRoot = await navigator.storage.getDirectory();
     const directoryHandle = await opfsRoot.getDirectoryHandle("opfs-gallery", {
@@ -298,8 +321,10 @@ async function opfsupload(files) {
       if (!file.type.startsWith("image/")) {
         continue;
       }
-  
+      pets[theindex].filename = file.name;
+      localStorage.setItem('pets', JSON.stringify(pets));
       loadImage(img, file);
+      break;
     }
 }
 
@@ -314,14 +339,22 @@ function loadImage(img, file) {
 }  
 
 async function opfsinit() {
+    const opfsRoot = await navigator.storage.getDirectory();
+    const directoryHandle = await opfsRoot.getDirectoryHandle("opfs-gallery", {
+      create: true,
+    });
+}
+
+async function opfschange(selectedpet) {
+    let pet = petExists(selectedpet);
     const img = document.getElementById("actualpicture");
     const opfsRoot = await navigator.storage.getDirectory();
     const directoryHandle = await opfsRoot.getDirectoryHandle("opfs-gallery", {
       create: true,
     });
     for await (let [name, handle] of directoryHandle) {
-      loadImage(img, await handle.getFile());
-      break;
+      if (name == pet.filename)
+        loadImage(img, await handle.getFile());
     }
   }
 
@@ -343,6 +376,7 @@ async function opfsinit() {
             setUpDifferentPet(pets[0].name)
             let button = document.querySelector('.petNameList');
             showSelectedPet(button);
+            opfschange(pets[0].name);
         }
     } else {
         localStorage.setItem('pets', JSON.stringify([]));
