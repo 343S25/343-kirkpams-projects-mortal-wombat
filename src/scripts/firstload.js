@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(da => {
             if (da.status != 'error') {
                 image.src = da.message;
-                image.alt = 'Image of random dog breed';
+                image.alt = 'Random dog breed';
             } else {
                 image.src = null;
                 image.alt = da.message;
