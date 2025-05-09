@@ -130,9 +130,8 @@ async function fileExists(filename) {
       create: true,
     });
   
-    const img = document.getElementById("actualpicture");
-    for (const file of files) {
-        if (file.name == filename) return true;
+    for await (let [name, handle] of directoryHandle) {
+        if (name == filename) return true;
     }
     return false;
 }
