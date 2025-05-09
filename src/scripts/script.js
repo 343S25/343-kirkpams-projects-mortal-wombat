@@ -124,15 +124,29 @@ function setUpPetAndLocalStorage() {
     }
 }
 
+async function fileExists(filename) {
+    const opfsRoot = await navigator.storage.getDirectory();
+    const directoryHandle = await opfsRoot.getDirectoryHandle("opfs-gallery", {
+      create: true,
+    });
+  
+    const img = document.getElementById("actualpicture");
+    for (const file of files) {
+        if (file.name == filename) return true;
+    }
+    return false;
+}
+
 // Change all of the things to do with the new selected pet
 function setUpDifferentPet(pet_name) {
     changeBreedInfo(pet_name);
     changePetDescription(pet_name);
     populateModalButtons(pet_name);
     let pet = petExists(pet_name);
-    changeBreedImage(pet_name);
-    if (pet.filename != "") {
-        opfschange(pet_name);
+    if (pet.filename != "" && fileExists(pet.filename)) {
+        opfschange(pet_name); 
+    } else {
+        changeBreedImage(pet_name);
     }
 }
 
